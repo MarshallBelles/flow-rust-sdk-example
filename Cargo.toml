@@ -1,0 +1,12 @@
+[package]
+name = "flow-rust-sdk-example"
+version = "0.1.0"
+edition = "2018"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+flow-rust-sdk = { git = "https://github.com/MarshallBelles/flow-rust-sdk.git", branch = "develop" }
+tokio = { version = "1.11.0", features = ["full"] }
+serde_json = "1.0.67"
+hex = "0.4.3"
