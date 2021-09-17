@@ -102,7 +102,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             Crypto.KeyListSignature(
                 keyIndex: 0,
                 signature:
-                    \"ef100c2a8d04de602cd59897e08001cf57ca153cb6f9083918cde1ec7de77418a2c236f7899b3f786d08a1b4592735e3a7461c3e933f420cf9babe350abe0c5a\".decodeHex()
+                    \"12adbf7d71d8ba2febf7922b001a9950248aba40300f23ee9922fafb39979af72ed50b752577d81dfec406151e2ca8bbedd220d9a0bb61b11e7017326c46daca\".decodeHex()
             )
         ]
     
@@ -186,7 +186,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut domain_tag: Vec<u8> = b"FLOW-V0.0-user".to_vec();
     padding(&mut domain_tag, 32);
 
-    let signature = sig_key.sign(b"helloworld");
+    let signature = sig_key.sign(&[domain_tag, b"helloworld".to_vec()].concat());
     println!("{}", hex::encode(&signature.as_bytes()));
     println!("{}", hex::encode(b"helloworld"));
 
