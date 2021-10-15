@@ -1,10 +1,10 @@
 [package]
 name = "flow-rust-sdk-example"
-version = "1.1.0"
+version = "1.2.0"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-flow-rust-sdk = { version = "2.0.3"}
+flow-rust-sdk = { version = "3.5.2"}
 tokio = { version = "1.11.0", features = ["full"] }

@@ -1,21 +1,27 @@
 use flow_rust_sdk::*;
 
+
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut connection = FlowConnection::new("grpc://localhost:3569").await?;
-
-        let payer = "f8d6e0586b0a20c7";
-        let payer_private_key = "324db577a741a9b7a2eb6cef4e37e72ff01a554bdbe4bd77ef9afe1cb00d3cec";
-        let public_keys = vec!["ef100c2a8d04de602cd59897e08001cf57ca153cb6f9083918cde1ec7de77418a2c236f7899b3f786d08a1b4592735e3a7461c3e933f420cf9babe350abe0c5a".to_owned()];
-
-        let acct = connection.create_account(
-            public_keys.to_vec(),
-            &payer.to_owned(),
-            &payer_private_key.to_owned(),
-            0,
-        )
-        .await
-        .expect("Could not create account");
-        println!("new account address: {:?}", hex::encode(acct.address));
+    
+    let script = b"
+        pub fun main(arg1: UFix64, arg2: UInt64, arg3: String): UFix64 {
+            log(arg2)
+            log(arg3)
+            return arg1
+        }      
+    ";
+    let arg1 = Argument::ufix64(12765.123456);
+    let arg2 = Argument::uint64(500);
+    let arg3 = Argument::string("Hello World!".to_string());
+    let arguments: Vec<Vec<u8>> = vec![
+        arg1.encode(),
+        arg2.encode(),
+        arg3.encode()
+    ];
+    println!("{:?}", String::from_utf8(arguments[0].to_vec())?);
+    let result: Value = from_slice(&connection.execute_script(script.to_vec(), arguments).await?.value)?;
+    println!("Script result: {}", result["value"]);
     Ok(())
 }
