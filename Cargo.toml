@@ -1,20 +1,10 @@
 [package]
 name = "flow-rust-sdk-example"
-version = "0.1.0"
+version = "1.1.0"
 edition = "2018"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
-jsonwebtokens = "1.1.0"
-ring = "0.16.20"
-hex = "0.4.3"
-serde_json = "1.0.68"
-rand_core = "0.6.3"
-secp256k1 = "0.20.3"
+flow-rust-sdk = { version = "2.0.3"}
 tokio = { version = "1.11.0", features = ["full"] }
-flow-rust-sdk = { git = "https://github.com/MarshallBelles/flow-rust-sdk.git", branch = "develop" }
-serde-rlp = "0.1.4"
-serde = { version = "1.0", features = ["derive"] }
-bytes = { version = "1", features = ["serde"] }
-p256 = {git = "https://github.com/MarshallBelles/elliptic-curves.git", branch = "master", features= ["ecdsa"]}
