@@ -188,9 +188,9 @@ checksum = "37ab347416e802de484e4d03c7316c48f1ecb56574dfd4a46a80f173ce1de04d"
 
 [[package]]
 name = "flow-rust-sdk"
-version = "3.5.1"
+version = "4.0.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "365472f7a819a59972a20c2c7a56b38e3771e8758f4e303bbd536aaffeef2f99"
+checksum = "a92cc9a7f9bf1cb8f2d53ef0ce92275349157364d624b3e9dc9b802411297c5e"
 dependencies = [
  "bytes",
  "hex",
